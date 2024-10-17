@@ -10,4 +10,10 @@
     <color name="gray">#404448</color>
     <color name="grayWhite">#fafbfc</color>
     <color name="green">#2cb44b</color>
+
+    <color name="backgroundColor">#8ecae6</color>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+    <color name="colorSecondary">#FF5722</color>
 </resources>
