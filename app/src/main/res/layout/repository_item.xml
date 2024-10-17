@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/grayWhite">
+    android:background="#B7B7B7">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -11,8 +11,9 @@
         android:layout_margin="16dp"
         app:cardCornerRadius="10dp"
         app:cardElevation="8dp"
-        app:cardBackgroundColor="@color/white"
-        app:cardUseCompatPadding="true">
+        app:cardBackgroundColor="#C4E1F6"
+        app:cardUseCompatPadding="true"
+        android:outlineAmbientShadowColor="#0D92F4">
 
         <RelativeLayout
             android:layout_width="match_parent"

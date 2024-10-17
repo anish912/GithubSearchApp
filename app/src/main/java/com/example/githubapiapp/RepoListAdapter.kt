@@ -29,10 +29,10 @@ class RepoListAdapter(context: Context) : ArrayAdapter<Repository>(context, 0) {
         val currentRepository = getItem(position)
 
         currentRepository?.let {
-            repoName?.text = it.name
-            repoLang?.text = it.language?:"Unknown Language"
-            repoOwner?.text = it.owner.login
-            repoStars?.text = it.stargazers_count.toString()
+            repoName?.text = "Repo Name: ${it.name}"
+            repoLang?.text = "Language: ${it.language ?: "Unknown Language"}"
+            repoOwner?.text = "Owner: ${it.owner.login}"
+            repoStars?.text = "Stars: ${it.stargazers_count}"
         }
 
         return view
