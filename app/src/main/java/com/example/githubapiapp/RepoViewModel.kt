@@ -19,14 +19,18 @@ class RepoViewModel : ViewModel() {
 
     fun searchRepositories(query: String) {
         viewModelScope.launch {
-            val result=NetworkUtils.getDataFromApi(query)
-            if (result!=null && result.isNotEmpty()){
-                _repositoryList.value=result
+            try {
+                val result = NetworkUtils.getDataFromApi(query)
+                if (result != null && result.isNotEmpty()) {
+                    _repositoryList.value = result
+                } else {
+                    _error.value = "No results found"
+                }
+            } catch (e: IOException) {
+                _error.value = "Network error: ${e.message}"
+            } catch (e: Exception) {
+                _error.value = "Error: ${e.message}"
             }
-            else{
-                _error.value="No results found"
-            }
-
         }
     }
 }
