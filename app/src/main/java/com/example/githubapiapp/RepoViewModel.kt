@@ -9,24 +9,24 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.io.IOException
 
-class RepositoryViewModel : ViewModel() {
+class RepoViewModel : ViewModel() {
 
     private val _repositoryList = MutableLiveData<List<Repository>>()
     val repositoryList: LiveData<List<Repository>> get() = _repositoryList
 
-    private val _errorMessage = MutableLiveData<String>()
-    val errorMessage: LiveData<String> get() = _errorMessage
+    private val _error = MutableLiveData<String>()
+    val error: LiveData<String> get() = _error
 
     fun searchRepositories(query: String) {
         viewModelScope.launch {
-            try {
-                val result = withContext(Dispatchers.IO) {
-                    NetworkUtils.getDataFromApi(query)
-                }
-                _repositoryList.value = result
-            } catch (e: IOException) {
-                _errorMessage.value = "Error fetching data"
+            val result=NetworkUtils.getDataFromApi(query)
+            if (result!=null && result.isNotEmpty()){
+                _repositoryList.value=result
             }
+            else{
+                _error.value="No results found"
+            }
+
         }
     }
 }

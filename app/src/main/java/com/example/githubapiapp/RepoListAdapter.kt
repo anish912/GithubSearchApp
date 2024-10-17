@@ -9,6 +9,15 @@ import android.widget.TextView
 
 class RepoListAdapter(context: Context) : ArrayAdapter<Repository>(context, 0) {
 
+    override fun clear() {
+        super.clear() // Clear existing items
+        notifyDataSetChanged() // Notify that data has changed
+    }
+    fun addAll(repositories: List<Repository>) {
+        super.addAll(repositories) // Add new items to the adapter
+        notifyDataSetChanged() // Notify that data has changed
+    }
+
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val view = convertView ?: LayoutInflater.from(context).inflate(R.layout.repository_item, parent, false)
 
@@ -21,11 +30,12 @@ class RepoListAdapter(context: Context) : ArrayAdapter<Repository>(context, 0) {
 
         currentRepository?.let {
             repoName?.text = it.name
-            repoLang?.text = it.language
-            repoOwner?.text = it.owner
-            repoStars?.text = it.starsCount
+            repoLang?.text = it.language?:"Unknown Language"
+            repoOwner?.text = it.owner.login
+            repoStars?.text = it.stargazers_count.toString()
         }
 
         return view
     }
+
 }
