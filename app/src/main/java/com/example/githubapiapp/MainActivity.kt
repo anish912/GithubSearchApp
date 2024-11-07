@@ -12,6 +12,7 @@ import android.widget.EditText
 import android.widget.ListView
 import android.widget.ProgressBar
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -39,10 +40,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var  repoViewModel:RepoViewModel
 
-//    companion object {
-//        private const val GITHUB_SEARCH_LOADER = 1
-//        private const val GITHUB_QUERY_TAG = "query"
-//    }
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -86,6 +84,7 @@ class MainActivity : AppCompatActivity() {
             loadingBar.visibility = View.VISIBLE
             makeGithubSearchQuery()
             dataListView.visibility = View.INVISIBLE
+            Toast.makeText(this,"Searching",Toast.LENGTH_LONG).show()
 
         }
     }
